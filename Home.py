@@ -7,6 +7,9 @@ import plotly.express as px
 import io
 import base64
 from openai import OpenAI
+import streamlit as st
+import pandas as pd
+import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
 st.title("📊 AI-Powered Analytics Dashboard")
@@ -38,20 +41,22 @@ def generate_download_link(fig):
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
 
+HF_API_KEY = st.secrets["HF_API_KEY"]
+
 def get_ai_summary(df):
-    try:
-        client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-        prompt = f"Provide a detailed insight summary in bullet points from the following DataFrame:\n{df.head(10).to_string()}"
-        
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.5
-        )
-        
-        return response.choices[0].message.content
-    except Exception as e:
-        return f"⚠️ AI Summary not available: {e}"
+    prompt = f"Give bullet-point insights from this table:\n{df.head(10).to_string()}"
+    headers = {"Authorization": f"Bearer {HF_API_KEY}"}
+    payload = {"inputs": prompt}
+
+    response = requests.post(
+        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1",
+        headers=headers,
+        json=payload)
+
+    if response.status_code == 200:
+        return response.json()[0]['generated_text']
+    else:
+        return f"⚠️ Error from Hugging Face: {response.status_code} - {response.text}"
 
 if uploaded_file is not None:
     
