@@ -15,19 +15,32 @@ st.title("📊 AI-Powered Analytics Dashboard")
 st.markdown("""
     <style>
         .main {
-            background-color: #f4f6f8;
-            padding: 2rem;
-            border-radius: 12px;
+            background-color: #f7f9fc;
+            padding: 1.5rem;
+            border-radius: 10px;
         }
         .stButton>button {
             background-color: #4CAF50;
             color: white;
+            font-size: 16px;
+            border-radius: 8px;
         }
-        .css-1d391kg p, .css-1d391kg h1, .css-1d391kg h2 {
-            color: #2E3B4E;
+        h1, h2, h3 {
+            color: #102542;
+        }
+        .stDataFrame, .stMarkdown {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 10px;
         }
     </style>
 """, unsafe_allow_html=True)
+
+st.markdown("---")
+st.markdown(
+    "<center>Made with ❤️ by [Your Name] • Powered by Streamlit</center>",
+    unsafe_allow_html=True
+)
 
 # ---------- File Upload ----------
 with st.container():
@@ -45,9 +58,7 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, encoding='latin1')
         st.session_state["shared_df"] = df
         st.session_state.df = df
-    st.session_state["shared_df"] = df
-    st.success("✅ Dataset uploaded successfully!")
-
+    
     # Save DataFrame in session state
     st.session_state['shared_df'] = df
     st.success("✅ Dataset uploaded successfully!")
@@ -71,8 +82,8 @@ def generate_download_link(fig):
 
 # ---------- Data and Plots ----------
 if df is not None:
-    with st.expander("🔍 Preview of Dataset"):
-        st.dataframe(df.head())
+    with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
+        st.dataframe(df.head(), use_container_width=True)
 
     with st.expander("📊 Summary Statistics"):
         st.write(df.describe())
