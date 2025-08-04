@@ -39,15 +39,14 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 st.markdown("""
     <style>
     .floating-rectangle {
         position: absolute;
-        top: 100px;
-        left: 100px;
+        top: 80px;
+        left: 50px;
         width: 90%;
-        height: 100vh;
+        height: 80vh;
         background-color: #f0f0f0;
         border: 2px solid #ccc;
         border-radius: 12px;
