@@ -35,8 +35,10 @@ uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
         df = pd.read_csv(uploaded_file, encoding='utf-8')
+        st.session_state["shared_df"] = df
     except UnicodeDecodeError:
         df = pd.read_csv(uploaded_file, encoding='latin1')
+        st.session_state["shared_df"] = df
 
     # Save DataFrame in session state
     st.session_state['shared_df'] = df
