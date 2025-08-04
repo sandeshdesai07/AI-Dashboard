@@ -38,18 +38,23 @@ st.markdown("""
 
     </style>
 """, unsafe_allow_html=True)
+
+
 st.markdown("""
-    <div style="
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        margin-bottom: 20px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-    ">
-        <h3 style='color: #4CAF50;'>📦 Rectangle Box</h3>
-        <p>This is a custom rectangle with styled content inside.</p>
-    </div>
+    <style>
+    .floating-rectangle {
+        position: absolute;
+        top: 80px;
+        left: 50px;
+        width: 90%;
+        height: 80vh;
+        background-color: #f0f0f0;
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        z-index: -1;
+    }
+    </style>
+    <div class="floating-rectangle"></div>
 """, unsafe_allow_html=True)
 
 st.markdown("---")
