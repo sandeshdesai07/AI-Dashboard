@@ -2,69 +2,85 @@ import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
-import numpy as np
+from sklearn.metrics import accuracy_score, mean_squared_error
 from math import sqrt
 
 st.title("🧠 Model Training")
 
-# Check if data is uploaded
+# Check if dataset is loaded
 if "df" in st.session_state:
-    df = st.session_state.df
+    df = st.session_state.df.copy()
+    all_cols = df.columns.tolist()
 
-    # Target selection
-    target_column = st.selectbox("🎯 Select Target Column", df.columns)
+    # User selects target variable
+    target_col = st.selectbox("🎯 Select the target variable", all_cols)
 
-    # Detect task type
-    y_unique = df[target_column].nunique()
-    if y_unique <= 20 and df[target_column].dtype in [int, object, 'category']:
-        task_type = "classification"
-    else:
-        task_type = "regression"
+    if target_col:
+        X = df.drop(columns=[target_col])
+        y = df[target_col]
 
-    st.write(f"✅ Detected task type: **{task_type}**")
+        # Auto detect task type
+        is_classification = y.dtype == "object" or y.nunique() <= 10
 
-    # Train model only if not already trained
-    if "trained_model" not in st.session_state or st.button("🔁 Retrain Model"):
-        X = df.drop(columns=[target_column])
-        y = df[target_column]
-
-        # Encode categorical columns if necessary
+        # One-hot encode if necessary
         X = pd.get_dummies(X)
 
-        # Align features in case of missing dummy columns
-        if "trained_features" in st.session_state:
-            X = X.reindex(columns=st.session_state.trained_features, fill_value=0)
+        # Align y if categorical
+        if is_classification:
+            y = y.astype("category").cat.codes
 
+        # Split data
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        if task_type == "classification":
-            model = RandomForestClassifier()
-        else:
-            model = RandomForestRegressor()
+        # Store column info in session for prediction
+        st.session_state.model_columns = X.columns.tolist()
+        st.session_state.is_classification = is_classification
 
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_test)
+        # Train model
+        if st.button("🚀 Train Model"):
+            if is_classification:
+                model = RandomForestClassifier()
+            else:
+                model = RandomForestRegressor()
 
-        # Store model and feature names
-        st.session_state.trained_model = model
-        st.session_state.target_column = target_column
-        st.session_state.task_type = task_type
-        st.session_state.trained_features = X.columns.tolist()
+            model.fit(X_train, y_train)
+            y_pred = model.predict(X_test)
 
-        st.success("🎉 Model trained successfully!")
+            st.session_state.trained_model = model
 
-        # Show metrics
-        if task_type == "classification":
-            acc = accuracy_score(y_test, y_pred)
-            st.write(f"🔍 **Accuracy:** {acc:.2f}")
-        else:
-            rmse = sqrt(mean_squared_error(y_test, y_pred))
-            r2 = r2_score(y_test, y_pred)
-            st.write(f"📉 **RMSE:** {rmse:.2f}")
-            st.write(f"📈 **R² Score:** {r2:.2f}")
-    else:
-        st.info("✅ Model already trained. You can go to the prediction page.")
+            # Evaluation
+            if is_classification:
+                acc = accuracy_score(y_test, y_pred)
+                st.success(f"✅ Model trained successfully with Accuracy: {acc:.2f}")
+            else:
+                rmse = sqrt(mean_squared_error(y_test, y_pred))
+                st.success(f"✅ Model trained successfully with RMSE: {rmse:.2f}")
+
+    # Prediction Interface
+    if "trained_model" in st.session_state:
+        st.markdown("---")
+        st.subheader("🔮 Make a Prediction")
+
+        # Get user input dynamically based on training features
+        input_data = {}
+        for col in st.session_state.model_columns:
+            input_data[col] = st.text_input(f"{col}", value="0")
+
+        if st.button("Predict"):
+            try:
+                # Convert inputs to float
+                input_df = pd.DataFrame([input_data])
+                input_df = input_df.astype(float)
+
+                prediction = st.session_state.trained_model.predict(input_df)[0]
+
+                if st.session_state.is_classification:
+                    st.success(f"🎉 Predicted class: {int(prediction)}")
+                else:
+                    st.success(f"🎉 Predicted value: {prediction:.2f}")
+
+            except Exception as e:
+                st.error(f"⚠️ Prediction failed: {e}")
 
 else:
     st.warning("📂 Please upload a dataset from the Home page.")
