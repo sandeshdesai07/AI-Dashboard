@@ -38,6 +38,34 @@ st.markdown("""
 
     </style>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .bordered-section {
+        border: 2px solid #D3D3D3;
+        border-radius: 100px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+        font-size: 5rem;
+        font-weight: 600;
+        color: #333333;
+        margin-bottom: 10rem;
+    }
+
+    .stFileUploader {
+        padding: 1rem;
+        border-radius: 100px;
+        background-color: #f9f9f9;
+    }
+
+    </style>
+""", unsafe_allow_html=True)
+
 st.markdown("---")
 
 # ---------- File Upload ----------
