@@ -50,7 +50,7 @@ elif 'shared_df' in st.session_state:
     #st.info("📁 Using previously uploaded file.")
 else:
     df = None
-    st.warning("📂 Please upload a dataset from the Home page.")
+    st.warning("📂 Please upload a dataset.")
 
 # ---------- Download Function ----------
 def generate_download_link(fig):
