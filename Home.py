@@ -131,4 +131,4 @@ if df is not None:
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
 
 
-    st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
+    #st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
