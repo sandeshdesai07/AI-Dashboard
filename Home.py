@@ -103,7 +103,7 @@ if df is not None:
         st.pyplot(fig)
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
         st.markdown(
-    f'<div style="text-align: right;">{generate_download_link(fig)}</div>',
+    f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
     unsafe_allow_html=True
 )
 
