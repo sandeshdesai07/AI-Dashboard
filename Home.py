@@ -14,25 +14,26 @@ st.title("📈 AI-Powered Analytics Dashboard")
 # ---------- Styling ----------
 st.markdown("""
     <style>
-        .main {
-            background-color: #f7f9fc;
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-        .stButton>button {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            border-radius: 8px;
-        }
-        h1, h2, h3 {
-            color: #102542;
-        }
-        .stDataFrame, .stMarkdown {
-            background-color: #ffffff;
-            padding: 1rem;
-            border-radius: 10px;
-        }
+    .main {
+        background-color: #f7f9fc;
+    }
+    h1, h2, h3 {
+        color: #333;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 0.6em 1.5em;
+        border-radius: 8px;
+        font-size: 1.1em;
+        margin-top: 1em;
+    }
+    .stFileUploader {
+        padding: 1em;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
     </style>
 """, unsafe_allow_html=True)
 
