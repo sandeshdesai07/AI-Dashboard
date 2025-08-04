@@ -47,10 +47,6 @@ if uploaded_file is not None:
         st.session_state.df = df
     st.session_state["shared_df"] = df
     st.success("✅ Dataset uploaded successfully!")
-elif 'shared_df' in st.session_state:
-    df = st.session_state['shared_df']
-else:
-    st.warning("📂 Please upload a dataset to get started.")
 
     # Save DataFrame in session state
     st.session_state['shared_df'] = df
@@ -88,11 +84,11 @@ if df is not None:
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
     st.subheader("📈 Auto Plots")
-    plot_type = st.sidebar.selectbox("Choose a plot type", [
-        "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
-        "Missing Values Heatmap", "Pairplot", "Violinplot"
-    ])
-
+    st.sidebar.title("🛠️ Options Panel")
+    plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", [
+    "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
+    "Missing Values Heatmap", "Pairplot", "Violinplot"])
+    
     if plot_type == "Histogram":
         col = st.selectbox("Choose a numeric column", numeric_cols)
         fig, ax = plt.subplots()
