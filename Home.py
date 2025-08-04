@@ -52,7 +52,12 @@ def get_ai_summary(df):
         return f"⚠️ AI Summary not available: {e}"
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
+    
+    try:
+        df = pd.read_csv(uploaded_file, encoding='utf-8')
+    except UnicodeDecodeError:
+        df = pd.read_csv(uploaded_file, encoding='latin1')
+
 
 
     st.success("✅ Dataset uploaded successfully!")
