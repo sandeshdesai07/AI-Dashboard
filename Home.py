@@ -9,7 +9,7 @@ import base64
 import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
-st.title("📊 AI-Powered Analytics Dashboard")
+st.title("🧮 AI-Powered Analytics Dashboard")
 
 # ---------- Styling ----------
 st.markdown("""
@@ -101,7 +101,7 @@ if df is not None:
         fig, ax = plt.subplots()
         sns.histplot(df[col], kde=True, ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
         st.markdown(
     f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
     unsafe_allow_html=True
@@ -112,27 +112,31 @@ if df is not None:
         fig, ax = plt.subplots()
         sns.boxplot(x=df[col], ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
 
     elif plot_type == "Correlation Heatmap":
         fig, ax = plt.subplots(figsize=(10, 6))
         corr = df[numeric_cols].corr()
         sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
 
     elif plot_type == "Countplot":
         col = st.selectbox("Choose a categorical column", cat_cols)
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.countplot(y=col, data=df, order=df[col].value_counts().index, ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
 
     elif plot_type == "Missing Values Heatmap":
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu", ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
 
     elif plot_type == "Pairplot":
         st.info("📌 Generating pairplot. This may take a few seconds for large datasets.")
@@ -145,7 +149,8 @@ if df is not None:
         fig, ax = plt.subplots(figsize=(10, 6))
         sns.violinplot(x=x_col, y=y_col, data=df, ax=ax)
         st.pyplot(fig)
-        st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
 
 
     #st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
