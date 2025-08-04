@@ -30,7 +30,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------- File Upload ----------
-uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+with st.container():
+    st.markdown("### 🧠 Upload and Understand Your Data")
+    st.write("Upload your dataset and explore its structure and basic statistics.")
+    uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+#uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
     try:
