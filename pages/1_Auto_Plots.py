@@ -16,13 +16,17 @@ def generate_download_link(fig):
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
 
+# ✅ Use consistent session key: "shared_df"
 if "shared_df" in st.session_state:
-    df = st.session_state.df
+    df = st.session_state["shared_df"]
 
     numeric_cols = df.select_dtypes(include=np.number).columns.tolist()
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
-    plot_type = st.sidebar.selectbox("Choose a plot type", ["Histogram", "Boxplot", "Correlation Heatmap", "Countplot", "Missing Values Heatmap"])
+    plot_type = st.sidebar.selectbox(
+        "Choose a plot type",
+        ["Histogram", "Boxplot", "Correlation Heatmap", "Countplot", "Missing Values Heatmap"]
+    )
 
     if plot_type == "Histogram":
         col = st.selectbox("Choose a numeric column", numeric_cols)
@@ -57,7 +61,6 @@ if "shared_df" in st.session_state:
         sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu", ax=ax)
         st.pyplot(fig)
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+
 else:
     st.warning("📂 Please upload a dataset from the Home page.")
-
-
