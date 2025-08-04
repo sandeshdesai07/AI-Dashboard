@@ -43,15 +43,18 @@ st.markdown("---")
 
 # ---------- File Upload ----------
 with st.container():
-    st.markdown("""
+    st.markdown(
+        """
         <div style="
-            background-color: #f0f2f6;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            padding: 18px 25px;
+            border-radius: 12px;
+            border: 1px solid #b2ebf2;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
         ">
-            <h3 style="margin: 0;">🪄 Upload and Understand Your Data</h3>
+            <h3 style="color: #00796b; margin: 0; font-family: 'Segoe UI', sans-serif;">
+                🪄 Upload and Understand Your Data
+            </h3>
         </div>
         """,
         unsafe_allow_html=True
