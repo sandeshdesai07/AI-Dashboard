@@ -16,7 +16,7 @@ def generate_download_link(fig):
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
 
-if "df" in st.session_state:
+if "shared_df" in st.session_state:
     df = st.session_state.df
 
     numeric_cols = df.select_dtypes(include=np.number).columns.tolist()
