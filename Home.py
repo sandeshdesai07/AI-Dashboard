@@ -75,10 +75,7 @@ def generate_download_link(fig):
     b64 = base64.b64encode(buf.read()).decode()
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
-st.markdown(
-    f'<div style="text-align: right;">{generate_download_link(fig)}</div>',
-    unsafe_allow_html=True
-)
+
 # ---------- Data and Plots ----------
 if df is not None:
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
@@ -105,6 +102,10 @@ if df is not None:
         sns.histplot(df[col], kde=True, ax=ax)
         st.pyplot(fig)
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+        st.markdown(
+    f'<div style="text-align: right;">{generate_download_link(fig)}</div>',
+    unsafe_allow_html=True
+)
 
     elif plot_type == "Boxplot":
         col = st.selectbox("Choose a numeric column", numeric_cols)
