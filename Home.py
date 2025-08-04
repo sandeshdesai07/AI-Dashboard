@@ -44,10 +44,10 @@ st.markdown("""
     <style>
     .floating-rectangle {
         position: absolute;
-        top: 80px;
-        left: 50px;
+        top: 100px;
+        left: 100px;
         width: 90%;
-        height: 80vh;
+        height: 100vh;
         background-color: #f0f0f0;
         border: 2px solid #ccc;
         border-radius: 12px;
