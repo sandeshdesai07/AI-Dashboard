@@ -39,28 +39,25 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-    <style>
-    .floating-rectangle {
-        position: absolute;
-        top: 80px;
-        left: 50px;
-        width: 90%;
-        height: 80vh;
-        background-color: #f0f0f0;
-        border: 2px solid #ccc;
-        border-radius: 12px;
-        z-index: -1;
-    }
-    </style>
-    <div class="floating-rectangle"></div>
-""", unsafe_allow_html=True)
-
 st.markdown("---")
 
 # ---------- File Upload ----------
 with st.container():
-    st.markdown("### 🪄 Upload and Understand Your Data")
+      st.markdown(
+        """
+        <div style="
+            background-color: #f0f2f6;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        ">
+            <h3 style="margin: 0;">🪄 Upload and Understand Your Data</h3>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    #st.markdown("### 🪄 Upload and Understand Your Data")
     st.write("Upload your dataset and explore its structure and basic statistics.")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
