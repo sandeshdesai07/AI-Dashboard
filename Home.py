@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 import io
 import base64
-import openai
+from openai import OpenAI
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
 st.title("📊 AI-Powered Analytics Dashboard")
@@ -40,13 +40,15 @@ def generate_download_link(fig):
 
 def get_ai_summary(df):
     try:
-        openai.api_key = st.secrets["OPENAI_API_KEY"]
+        client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
         prompt = f"Provide a detailed insight summary in bullet points from the following DataFrame:\n{df.head(10).to_string()}"
-        response = openai.ChatCompletion.create(
+        
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.5
         )
+        
         return response.choices[0].message.content
     except Exception as e:
         return f"⚠️ AI Summary not available: {e}"
