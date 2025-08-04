@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 import numpy as np
+from math import sqrt
 
 st.title("🧠 Model Training")
 
@@ -58,7 +59,7 @@ if "df" in st.session_state:
             acc = accuracy_score(y_test, y_pred)
             st.write(f"🔍 **Accuracy:** {acc:.2f}")
         else:
-            rmse = mean_squared_error(y_test, y_pred, squared=False)
+            rmse = sqrt(mean_squared_error(y_test, y_pred))
             r2 = r2_score(y_test, y_pred)
             st.write(f"📉 **RMSE:** {rmse:.2f}")
             st.write(f"📈 **R² Score:** {r2:.2f}")
