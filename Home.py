@@ -45,6 +45,12 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, encoding='latin1')
         st.session_state["shared_df"] = df
         st.session_state.df = df
+    st.session_state["shared_df"] = df
+    st.success("✅ Dataset uploaded successfully!")
+elif 'shared_df' in st.session_state:
+    df = st.session_state['shared_df']
+else:
+    st.warning("📂 Please upload a dataset to get started.")
 
     # Save DataFrame in session state
     st.session_state['shared_df'] = df
