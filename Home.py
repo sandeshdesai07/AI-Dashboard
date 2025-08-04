@@ -52,8 +52,8 @@ def get_ai_summary(df):
         return f"⚠️ AI Summary not available: {e}"
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.session_state.df = df
+    df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
+
 
     st.success("✅ Dataset uploaded successfully!")
     with st.expander("🔍 Preview of Dataset"):
