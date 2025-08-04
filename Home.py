@@ -61,24 +61,6 @@ def generate_download_link(fig):
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
 
-# ---------- AI Summary ----------
-HF_API_KEY = st.secrets["HF_API_KEY"]
-
-def get_ai_summary(df):
-    prompt = f"Give bullet-point insights from this table:\n{df.head(10).to_string()}"
-    headers = {"Authorization": f"Bearer {HF_API_KEY}"}
-    payload = {"inputs": prompt}
-
-    response = requests.post(
-        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1",
-        headers=headers,
-        json=payload)
-
-    if response.status_code == 200:
-        return response.json()[0]['generated_text']
-    else:
-        return f"⚠️ Error from Hugging Face: {response.status_code} - {response.text}"
-
 # ---------- Data and Plots ----------
 if df is not None:
     with st.expander("🔍 Preview of Dataset"):
@@ -146,10 +128,5 @@ if df is not None:
         st.pyplot(fig)
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
 
-    # ---------- AI Insights ----------
-    st.subheader("🤖 AI-Powered Insights")
-    with st.spinner("Generating insights using AI..."):
-        summary = get_ai_summary(df)
-        st.markdown(summary)
 
     st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
