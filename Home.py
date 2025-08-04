@@ -47,7 +47,7 @@ if uploaded_file is not None:
 # Use previously uploaded file if user switches back to this page
 elif 'shared_df' in st.session_state:
     df = st.session_state['shared_df']
-    st.info("📁 Using previously uploaded file.")
+    #st.info("📁 Using previously uploaded file.")
 else:
     df = None
     st.warning("📂 Please upload a dataset from the Home page.")
