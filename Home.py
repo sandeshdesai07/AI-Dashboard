@@ -13,7 +13,6 @@ import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
 st.title("📊 AI-Powered Analytics Dashboard")
-st.title("🏠 Home Page")
 
 st.markdown("""
     <style>
@@ -33,11 +32,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.session_state["shared_df"] = df  # ✅ Save for other pages
-    st.write("✅ File uploaded successfully!")
-    st.dataframe(df)
     
 def generate_download_link(fig):
     buf = io.BytesIO()
@@ -70,8 +64,9 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, encoding='utf-8')
     except UnicodeDecodeError:
         df = pd.read_csv(uploaded_file, encoding='latin1')
-
-
+        st.session_state["shared_df"] = df  # ✅ Save for other pages
+        st.write("✅ File uploaded successfully!")
+        st.dataframe(df)
 
     st.success("✅ Dataset uploaded successfully!")
     with st.expander("🔍 Preview of Dataset"):
