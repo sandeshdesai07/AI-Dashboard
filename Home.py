@@ -6,14 +6,12 @@ import numpy as np
 import plotly.express as px
 import io
 import base64
-from openai import OpenAI
-import streamlit as st
-import pandas as pd
 import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
 st.title("📊 AI-Powered Analytics Dashboard")
 
+# ---------- Styling ----------
 st.markdown("""
     <style>
         .main {
@@ -31,8 +29,28 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
-    
+# ---------- File Upload ----------
+uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+
+if uploaded_file is not None:
+    try:
+        df = pd.read_csv(uploaded_file, encoding='utf-8')
+    except UnicodeDecodeError:
+        df = pd.read_csv(uploaded_file, encoding='latin1')
+
+    # Save DataFrame in session state
+    st.session_state['shared_df'] = df
+    st.success("✅ Dataset uploaded successfully!")
+
+# Use previously uploaded file if user switches back to this page
+elif 'shared_df' in st.session_state:
+    df = st.session_state['shared_df']
+    st.info("📁 Using previously uploaded file.")
+else:
+    df = None
+    st.warning("📂 Please upload a dataset from the Home page.")
+
+# ---------- Download Function ----------
 def generate_download_link(fig):
     buf = io.BytesIO()
     fig.savefig(buf, format="png")
@@ -41,6 +59,7 @@ def generate_download_link(fig):
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
 
+# ---------- AI Summary ----------
 HF_API_KEY = st.secrets["HF_API_KEY"]
 
 def get_ai_summary(df):
@@ -58,19 +77,10 @@ def get_ai_summary(df):
     else:
         return f"⚠️ Error from Hugging Face: {response.status_code} - {response.text}"
 
-if uploaded_file is not None:
-    
-    try:
-        df = pd.read_csv(uploaded_file, encoding='utf-8')
-    except UnicodeDecodeError:
-        df = pd.read_csv(uploaded_file, encoding='latin1')
-        st.session_state["shared_df"] = df  # ✅ Save for other pages
-        st.write("✅ File uploaded successfully!")
-        st.dataframe(df)
-
-    st.success("✅ Dataset uploaded successfully!")
+# ---------- Data and Plots ----------
+if df is not None:
     with st.expander("🔍 Preview of Dataset"):
-        st.write(df.head())
+        st.dataframe(df.head())
 
     with st.expander("📊 Summary Statistics"):
         st.write(df.describe())
@@ -134,7 +144,7 @@ if uploaded_file is not None:
         st.pyplot(fig)
         st.markdown(generate_download_link(fig), unsafe_allow_html=True)
 
-    # AI-generated summary section
+    # ---------- AI Insights ----------
     st.subheader("🤖 AI-Powered Insights")
     with st.spinner("Generating insights using AI..."):
         summary = get_ai_summary(df)
