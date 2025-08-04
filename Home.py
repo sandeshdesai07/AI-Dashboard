@@ -9,7 +9,7 @@ import base64
 import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
-st.title("🧮 AI-Powered Analytics Dashboard")
+st.title("📈 AI-Powered Analytics Dashboard")
 
 # ---------- Styling ----------
 st.markdown("""
