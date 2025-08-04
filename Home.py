@@ -14,29 +14,30 @@ st.title("📈 AI-Powered Analytics Dashboard")
 # ---------- Styling ----------
 st.markdown("""
     <style>
-    .main {
-        background-color: #f7f9fc;
-    }
-    h1, h2, h3 {
-        color: #333;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 0.6em 1.5em;
-        border-radius: 8px;
-        font-size: 1.1em;
-        margin-top: 1em;
-    }
-    .stFileUploader {
-        padding: 1em;
-        background-color: #ffffff;
+    .bordered-section {
+        border: 2px solid #D3D3D3;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
+
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333333;
+        margin-bottom: 1rem;
+    }
+
+    .stFileUploader {
+        padding: 1rem;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+    }
+
     </style>
 """, unsafe_allow_html=True)
-
 st.markdown("---")
 
 # ---------- File Upload ----------
