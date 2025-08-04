@@ -37,10 +37,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.markdown(
-    "<center>Made with ❤️ by [Your Name] • Powered by Streamlit</center>",
-    unsafe_allow_html=True
-)
 
 # ---------- File Upload ----------
 with st.container():
@@ -79,7 +75,10 @@ def generate_download_link(fig):
     b64 = base64.b64encode(buf.read()).decode()
     href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
     return href
-
+st.markdown(
+    f'<div style="text-align: right;">{generate_download_link(fig)}</div>',
+    unsafe_allow_html=True
+)
 # ---------- Data and Plots ----------
 if df is not None:
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
