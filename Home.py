@@ -43,8 +43,7 @@ st.markdown("---")
 
 # ---------- File Upload ----------
 with st.container():
-      st.markdown(
-        """
+    st.markdown("""
         <div style="
             background-color: #f0f2f6;
             padding: 15px;
