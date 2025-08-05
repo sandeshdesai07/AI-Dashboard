@@ -241,13 +241,13 @@ if df is not None:
         /* Target the selectbox label */
         .custom-selectbox-label {
             background: linear-gradient(to right, #AEE2FF, #C2FFD9);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 18px;
+            padding:3px 7px;
+            border-radius: 200px;
+            font-size: 10px;
             font-weight: bold;
             font-family: 'Trebuchet MS', sans-serif;
             color: #333;
-            transition: all 1s ease;
+            transition: all 0.5s ease;
             display: inline-block;
         }
 
