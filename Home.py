@@ -266,7 +266,7 @@ st.sidebar.markdown('<div class="custom-selectbox-label">📊 Choose a Plot Type
 # Display the selectbox without label
 plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Heatmap", "Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    st.write("")
+    #st.write("")
      
     plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
