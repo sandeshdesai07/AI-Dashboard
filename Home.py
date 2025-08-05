@@ -169,8 +169,7 @@ if df is not None:
             font-weight: bold;
             box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: box-shadow 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
 
             
             
@@ -180,6 +179,7 @@ if df is not None:
             background: linear-gradient(to right, #B8E5D1, #C5B8E5);
             color: #2E1C1C;
             box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
 
