@@ -16,7 +16,7 @@ st.markdown(
         <h1 style="
             color: #2c3e50;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(90deg, #F46B99, #ffffff);
+            background: linear-gradient(90deg, #A69FEF, #ffffff);
             display: inline-block;
             padding: 10px 30px;
             border-radius: 15px;
