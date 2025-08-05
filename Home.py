@@ -200,17 +200,28 @@ if df is not None:
             color: #5F2D2D;
             font-size: 22px;
             font-weight: bold;
-            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: all 6.4s ease-in-out;
+
+            /* Neutral states for animatable props */
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.0);
+            transform: scale(1);
+            text-shadow: none;
+
+            /* Add transitions */
+            transition: 
+                background 1.2s ease,
+                color 1.2s ease,
+                box-shadow 1.2s ease,
+                transform 1.2s ease,
+                text-shadow 1.2s ease;
         }
 
         .custom-sidebar-title:hover {
             background: linear-gradient(to right, #B8E5D1, #C5B8E5);
             color: #2E1C1C;
-            box-shadow: 0 0 10px #C5B8E5, 0 0 20px #B8E5D1;
-            transform: skew(-2deg, 1deg) scale(1.03);
-            text-shadow: 0 0 2px #fff, 0 0 4px #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            text-shadow: 0 0 5px #fff;
         }
     </style>
 
@@ -218,6 +229,7 @@ if df is not None:
         🛠️ Options Panel
     </div>
 """, unsafe_allow_html=True)
+
 
   ########################OPTION PANEL EFFECT##########################  
 
