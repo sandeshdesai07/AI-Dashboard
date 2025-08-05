@@ -9,7 +9,6 @@ import base64
 import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
-#st.title("📈 AI-Powered Analytics Dashboard")
 st.markdown(
     """
     <div style="text-align: center; padding: 10px;">
@@ -28,7 +27,32 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+######################################
 
+st.markdown(
+    """
+    <div style="text-align: center; padding: 10px;">
+        <h1 style="
+            color: #2c3e50;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(90deg, #84CFDB, #ffffff);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 15px;
+            box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        "
+        onmouseover="this.style.transform='scale(1.05)'; this.style.background='linear-gradient(90deg, #B0E0E6, #ffffff)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(90deg, #84CFDB, #ffffff)';"
+        >
+            📈 AI-Powered Analytics Dashboard
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+#############################
 
 # ---------- Styling ----------
 st.markdown("""
@@ -169,7 +193,7 @@ if df is not None:
             font-weight: bold;
             box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: background-color 10s ease, color 10s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
 
             
             
@@ -179,7 +203,7 @@ if df is not None:
             background: linear-gradient(to right, #B8E5D1, #C5B8E5);
             color: #2E1C1C;
             box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
-            transition: background-color 10s ease, color 10s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
 
