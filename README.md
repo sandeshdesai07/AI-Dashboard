@@ -74,8 +74,9 @@
 
 ├── pages/
 
-│ ├── 1_Auto_Plots.py # Additional visualization pages
-│ ├── 2_Model_Train.py # (Planned) ML Training Module
+│ └── 1_Auto_Plots.py # Additional visualization pages
+
+│ └── 2_Model_Train.py # (Planned) ML Training Module
 
 ├── Home.py # Main dashboard file
 
