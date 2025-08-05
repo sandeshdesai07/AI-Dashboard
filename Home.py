@@ -140,9 +140,10 @@ if df is not None:
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
     #st.subheader("📈 Auto Plots")
+    #e3f2fd
     st.markdown("""
     <div style="
-        background: linear-gradient(to right, #e3f2fd, #bbdefb);
+        background: linear-gradient(to right,#ECF669, #bbdefb);
         padding: 10px 20px;
         border-left: 6px solid #2196f3;
         border-radius: 8px;
