@@ -40,7 +40,7 @@
 
 ## 🖼️ Screenshots
 
-<img src="https://i.imgur.com/YOUR_IMAGE_1.png" width="800"/>
+<img src="assets/Dashboard_View_1.png" width="800"/>
 <img src="https://i.imgur.com/YOUR_IMAGE_2.png" width="800"/>
 
 ---
