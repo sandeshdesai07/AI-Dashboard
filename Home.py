@@ -143,7 +143,7 @@ if df is not None:
     #e3f2fd
     st.markdown("""
     <div style="
-        background: linear-gradient(to right,#F46161, #bbdefb);
+        background: linear-gradient(to right,#EDA2A2, #bbdefb);
         padding: 10px 20px;
         border-left: 6px solid #2196f3;
         border-radius: 8px;
