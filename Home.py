@@ -189,14 +189,9 @@ if df is not None:
         📈 Auto Plots
     </div>
 """, unsafe_allow_html=True)
-    ##########################################################
-    
 
-  ########################OPTION PANEL EFFECT##########################  
-
-
-    
-   st.sidebar.markdown("""
+    ###########################################################
+    st.sidebar.markdown("""
     <style>
         .custom-sidebar-title {
             background: linear-gradient(to right, #98CEB8, #98A4CE);
