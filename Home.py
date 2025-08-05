@@ -61,7 +61,7 @@ with st.container():
     )
     #st.markdown("### 🪄 Upload and Understand Your Data")
     st.write("Upload your dataset and explore its structure and basic statistics.")
-    uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+    uploaded_file = st.file_uploader("\n📂 Upload your CSV file", type=["csv"])
 #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
