@@ -161,7 +161,7 @@ if df is not None:
     st.sidebar.markdown("""
     <div style="
         background: linear-gradient(to right, #ffe0b2, #ffcc80);
-        padding: 15px 20px;
+        padding: 5px 10px;
         border-radius: 8px;
         font-family: 'Trebuchet MS', sans-serif;
         color: #e65100;
