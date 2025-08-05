@@ -8,7 +8,7 @@ import io
 import base64
 import requests
 
-#################PAGE TITLE#####################
+################################PAGE TITLE###################################
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
 st.markdown(
     """
@@ -41,35 +41,9 @@ st.markdown(
 )
 
 
-#############################
+#################################################################
 
 # ---------- Styling ----------
-st.markdown("""
-    <style>
-    .bordered-section {
-        border: 2px solid #D3D3D3;
-        border-radius: 10px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        background-color: #ffffff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    .section-title {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-
-    .stFileUploader {
-        padding: 1rem;
-        border-radius: 30px;
-        background-color: #f9f9f9;
-    }
-
-    </style>
-""", unsafe_allow_html=True)
 
 st.markdown("---")
 
