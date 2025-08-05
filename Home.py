@@ -32,7 +32,7 @@ st.markdown("""
 
     .stFileUploader {
         padding: 1rem;
-        border-radius: 6px;
+        border-radius: 30px;
         background-color: #f9f9f9;
     }
 
