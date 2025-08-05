@@ -29,7 +29,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # ---------- Styling ----------
 st.markdown("""
     <style>
@@ -63,35 +62,34 @@ st.markdown("---")
 # ---------- File Upload ----------
 with st.container():
     st.markdown(
-    """
-    <div style="text-align: center;">
-        <div style="
-            display: inline-block;
-            background: linear-gradient(135deg, #e0f7fa, #ffffff);
-            padding: 8px 20px;
-            border-radius: 50px;
-            border: 5px solid #b2ebf2;
-            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
-        ">
-            <h3 style="color: #00796b; margin: 0; font-family: 'Segoe UI', sans-serif;">
-                🪄 Upload and Understand Your Data
-            </h3>
+        """
+        <div style="text-align: center;">
+            <div style="
+                display: inline-block;
+                background: linear-gradient(135deg, #e0f7fa, #ffffff);
+                padding: 8px 20px;
+                border-radius: 50px;
+                border: 5px solid #b2ebf2;
+                box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+            ">
+                <h3 style="color: #00796b; margin: 0; font-family: 'Segoe UI', sans-serif;">
+                    🪄 Upload and Understand Your Data
+                </h3>
+            </div>
         </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+        """,
+        unsafe_allow_html=True
+    )
 
     #st.markdown("### 🪄 Upload and Understand Your Data")
     st.write("")
     #st.write("Upload your dataset and explore its structure and basic statistics.")
     st.markdown(
-    "<h5 style='text-align: center; color: #AE6BC4;'>Upload your dataset and explore its structure and basic statistics.</h5>",
-    unsafe_allow_html=True
-)
+        "<h5 style='text-align: center; color: #AE6BC4;'>Upload your dataset and explore its structure and basic statistics.</h5>",
+        unsafe_allow_html=True
+    )
     st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
-    
     #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
@@ -103,7 +101,7 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, encoding='latin1')
         st.session_state["shared_df"] = df
         st.session_state.df = df
-    
+
     # Save DataFrame in session state
     st.session_state['shared_df'] = df
     st.success("✅ Dataset uploaded successfully!")
@@ -155,7 +153,7 @@ if df is not None:
     ">
         📈 Auto Plots
     </div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     #st.sidebar.title("🛠️ Options Panel")
     st.sidebar.markdown("""
@@ -172,10 +170,10 @@ if df is not None:
     ">
         🛠️ Options Panel
     </div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-    #///////////////////////option panel//////////////////
-    # Inject custom CSS for the sidebar selectbox
+#///////////////////////option panel//////////////////
+# Inject custom CSS for the sidebar selectbox
 st.markdown("""
     <style>
         .css-1c7y2kd.e1fqkh3o5 {
@@ -198,63 +196,60 @@ plot_type = st.sidebar.selectbox(
 )
 plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Missing Values Heatmap","Histogram", "Boxplot", "Correlation Heatmap", "Countplot", "Pairplot", "Violinplot"])
 
-    
-    
-    if plot_type == "Histogram":
-        col = st.selectbox("Choose a numeric column", numeric_cols)
-        fig, ax = plt.subplots()
-        sns.histplot(df[col], kde=True, ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(
-    f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
-    unsafe_allow_html=True
-)
+if plot_type == "Histogram":
+    col = st.selectbox("Choose a numeric column", numeric_cols)
+    fig, ax = plt.subplots()
+    sns.histplot(df[col], kde=True, ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(
+        f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
+        unsafe_allow_html=True
+    )
 
-    elif plot_type == "Boxplot":
-        col = st.selectbox("Choose a numeric column", numeric_cols)
-        fig, ax = plt.subplots()
-        sns.boxplot(x=df[col], ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+elif plot_type == "Boxplot":
+    col = st.selectbox("Choose a numeric column", numeric_cols)
+    fig, ax = plt.subplots()
+    sns.boxplot(x=df[col], ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
-    elif plot_type == "Correlation Heatmap":
-        fig, ax = plt.subplots(figsize=(10, 6))
-        corr = df[numeric_cols].corr()
-        sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+elif plot_type == "Correlation Heatmap":
+    fig, ax = plt.subplots(figsize=(10, 6))
+    corr = df[numeric_cols].corr()
+    sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
-    elif plot_type == "Countplot":
-        col = st.selectbox("Choose a categorical column", cat_cols)
-        fig, ax = plt.subplots(figsize=(10, 5))
-        sns.countplot(y=col, data=df, order=df[col].value_counts().index, ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+elif plot_type == "Countplot":
+    col = st.selectbox("Choose a categorical column", cat_cols)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    sns.countplot(y=col, data=df, order=df[col].value_counts().index, ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
-    elif plot_type == "Missing Values Heatmap":
-        fig, ax = plt.subplots(figsize=(10, 5))
-        sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu", ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+elif plot_type == "Missing Values Heatmap":
+    fig, ax = plt.subplots(figsize=(10, 5))
+    sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu", ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
-    elif plot_type == "Pairplot":
-        st.info("📌 Generating pairplot. This may take a few seconds for large datasets.")
-        fig = sns.pairplot(df[numeric_cols])
-        st.pyplot(fig)
+elif plot_type == "Pairplot":
+    st.info("📌 Generating pairplot. This may take a few seconds for large datasets.")
+    fig = sns.pairplot(df[numeric_cols])
+    st.pyplot(fig)
 
-    elif plot_type == "Violinplot":
-        y_col = st.selectbox("Choose a numeric column for y-axis", numeric_cols)
-        x_col = st.selectbox("Choose a categorical column for x-axis", cat_cols)
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.violinplot(x=x_col, y=y_col, data=df, ax=ax)
-        st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+elif plot_type == "Violinplot":
+    y_col = st.selectbox("Choose a numeric column for y-axis", numeric_cols)
+    x_col = st.selectbox("Choose a categorical column for x-axis", cat_cols)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.violinplot(x=x_col, y=y_col, data=df, ax=ax)
+    st.pyplot(fig)
+    #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
-
-    #st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
+#st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
