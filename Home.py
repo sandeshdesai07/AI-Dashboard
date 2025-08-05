@@ -197,9 +197,9 @@ plot_type = st.sidebar.selectbox(
      "Correlation Heatmap", "Countplot", "Pairplot", "Violinplot"]
 )
 
-        plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Missing Values Heatmap",
+    '''plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Missing Values Heatmap",
     "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
-     "Pairplot", "Violinplot"])
+     "Pairplot", "Violinplot"])'''
     
     if plot_type == "Histogram":
         col = st.selectbox("Choose a numeric column", numeric_cols)
