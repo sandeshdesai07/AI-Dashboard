@@ -169,7 +169,8 @@ if df is not None:
             font-weight: bold;
             box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.4s ease, background-color 0.3s ease;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
             
         }
 
