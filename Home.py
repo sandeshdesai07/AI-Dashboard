@@ -175,8 +175,9 @@ if df is not None:
 """, unsafe_allow_html=True)
 
     #///////////////////////option panel//////////////////
-    st.write("")
-    st.write("")
+    with st.container():
+        st.write("")
+    #st.write("")
        
     plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
