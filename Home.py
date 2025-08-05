@@ -9,14 +9,14 @@ import base64
 import requests
 
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
-st.title("📈 AI-Powered Analytics Dashboard")
+#st.title("📈 AI-Powered Analytics Dashboard")
 st.markdown(
     """
     <div style="text-align: center; padding: 10px;">
         <h1 style="
             color: #2c3e50;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(90deg, #e3f2fd, #ffffff);
+            background: linear-gradient(90deg, #94EA80, #ffffff);
             display: inline-block;
             padding: 10px 30px;
             border-radius: 15px;
