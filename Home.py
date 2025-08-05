@@ -241,9 +241,9 @@ if df is not None:
         /* Target the selectbox label */
         .custom-selectbox-label {
             background: linear-gradient(to right, #AEE2FF, #C2FFD9);
-            padding:3px 7px;
+            padding:4px 10px;
             border-radius: 200px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             font-family: 'Trebuchet MS', sans-serif;
             color: #333;
