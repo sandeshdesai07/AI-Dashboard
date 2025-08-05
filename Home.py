@@ -243,7 +243,7 @@ if df is not None:
             background: linear-gradient(to right, #AEE2FF, #C2FFD9);
             padding:4px 10px;
             border-radius: 200px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: bold;
             font-family: 'Trebuchet MS', sans-serif;
             color: #333;
