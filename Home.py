@@ -41,8 +41,7 @@ st.markdown(
 )
 
 
-#################################################################
-
+################################FILE UPLOAD SECTION#########################
 # ---------- Styling ----------
 st.markdown("""
     <style>
@@ -74,6 +73,7 @@ st.markdown("""
 st.markdown("---")
 
 # ---------- File Upload ----------
+
 with st.container():
     st.markdown(
     """
@@ -94,7 +94,50 @@ with st.container():
     """,
     unsafe_allow_html=True
 )
+#****************************************
+with st.container():
+    st.markdown(
+        """
+        <style>
+        .upload-title-container {
+            display: inline-block;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 5px solid #b2ebf2;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease-in-out;
+        }
 
+        .upload-title-container:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #b2ebf2, #e0f7fa);
+            box-shadow: 4px 8px 18px rgba(0, 0, 0, 0.15);
+            border-color: #4dd0e1;
+        }
+
+        .upload-title-text {
+            color: #00796b;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.4s ease;
+        }
+
+        .upload-title-container:hover .upload-title-text {
+            color: #004d40;
+        }
+        </style>
+
+        <div style="text-align: center;">
+            <div class="upload-title-container">
+                <h3 class="upload-title-text">🪄 Upload and Understand Your Data</h3>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+#*************************************************
+    
     #st.markdown("### 🪄 Upload and Understand Your Data")
     st.write("")
     #st.write("Upload your dataset and explore its structure and basic statistics.")
