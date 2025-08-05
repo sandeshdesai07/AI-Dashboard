@@ -169,7 +169,7 @@ if df is not None:
             font-weight: bold;
             box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.9s ease;
         }
 
         .custom-sidebar-title:hover {
