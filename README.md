@@ -45,6 +45,10 @@
 <img src="assets/Dashboard_View_3.png" width="800"/>
 <img src="assets/Dashboard_View_4.png" width="800"/>
 <img src="assets/Dashboard_View_5.png" width="800"/>
+<img src="assets/Dashboard_View_9.png" width="800"/>
+<img src="assets/Dashboard_View_6.png" width="800"/>
+<img src="assets/Dashboard_View_7.png" width="800"/>
+<img src="assets/Dashboard_View_8.png" width="800"/>
 
 ---
 
