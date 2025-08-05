@@ -49,6 +49,8 @@
 <img src="assets/Dashboard_View_6.png" width="800"/>
 <img src="assets/Dashboard_View_7.png" width="800"/>
 <img src="assets/Dashboard_View_8.png" width="800"/>
+<img src="assets/Dashboard_View_11.png" width="800"/>
+<img src="assets/Dashboard_View_10.png" width="800"/>
 
 ---
 
