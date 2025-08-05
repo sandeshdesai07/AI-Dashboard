@@ -139,7 +139,7 @@ if df is not None:
     numeric_cols = df.select_dtypes(include=np.number).columns.tolist()
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
-    st.subheader("📈 Auto Plots")
+    #st.subheader("📈 Auto Plots")
     st.markdown("""
     <div style="
         background: linear-gradient(to right, #e3f2fd, #bbdefb);
