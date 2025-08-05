@@ -1,3 +1,4 @@
+# ------------------------- Import Required Libraries -------------------------
 import streamlit as st
 import pandas as pd
 import seaborn as sns
@@ -8,8 +9,10 @@ import io
 import base64
 import requests
 
-################################PAGE TITLE###################################
+# ------------------------- Set Streamlit Page Configuration -------------------------
 st.set_page_config(page_title="AI Analytics Dashboard", layout="wide")
+
+# ------------------------- Dashboard Title with Hover Styling -------------------------
 st.markdown(
     """
     <style>
@@ -40,9 +43,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-################################FILE UPLOAD SECTION#########################
-# ---------- Styling ----------
+# ------------------------- Styling for Upload Section -------------------------
 st.markdown("""
     <style>
     .bordered-section {
@@ -72,8 +73,7 @@ st.markdown("""
 
 st.markdown("---")
 
-# ---------- File Upload ----------            
-
+# ------------------------- File Upload UI Section -------------------------            
 with st.container():
     st.markdown(
         """
@@ -124,9 +124,8 @@ with st.container():
 )
     st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
-    
-############################Main Operation###################################
 
+# ------------------------- Handle File Upload and Session Storage -------------------------
 if uploaded_file is not None:
     try:
         df = pd.read_csv(uploaded_file, encoding='utf-8')
@@ -141,24 +140,22 @@ if uploaded_file is not None:
     st.session_state['shared_df'] = df
     st.success("✅ Dataset uploaded successfully!")
 
-# Use previously uploaded file if user switches back to this page
+# ------------------------- Retrieve Cached Data if Upload Not Triggered -------------------------
 elif 'shared_df' in st.session_state:
     df = st.session_state['shared_df']
-    #st.info("📁 Using previously uploaded file.")
 else:
     df = None
-    #st.warning("📂 Please upload a dataset.")
 
-# ---------- Download Function ----------
+# ------------------------- Function to Generate Plot Download Link -------------------------
 def generate_download_link(fig):
     buf = io.BytesIO()
     fig.savefig(buf, format="png")
     buf.seek(0)
     b64 = base64.b64encode(buf.read()).decode()
-    href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📥 Download Plot as PNG</a>'
+    href = f'<a href="data:file/png;base64,{b64}" download="plot.png">📅 Download Plot as PNG</a>'
     return href
 
-# ---------- Data and Plots ----------
+# ------------------------- Show Dataset, Summary and Missing Values -------------------------
 if df is not None:   
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
         st.dataframe(df.head(), use_container_width=True)
@@ -166,14 +163,13 @@ if df is not None:
     with st.expander("📊 Summary Statistics"):
         st.write(df.describe())
 
-    with st.expander("🧼 Missing Values Summary"):
+    with st.expander("🫼 Missing Values Summary"):
         st.write(df.isnull().sum())
 
     numeric_cols = df.select_dtypes(include=np.number).columns.tolist()
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
-    #st.subheader("📈 Auto Plots")
-    #e3f2fd
+    # ------------------------- Section Title: Auto Plots -------------------------
     st.markdown("""
     <div style="
         background: linear-gradient(to right,#ABF091, #bbdefb);
@@ -190,14 +186,10 @@ if df is not None:
     </div>
 """, unsafe_allow_html=True)
 
-    
-    
-    #///////////////////////option panel//////////////////
+    # ------------------------- Sidebar Plot Selection Panel -------------------------
     with st.container():
-        #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         st.markdown("""
     <style>
-        /* Target the selectbox label */
         .custom-selectbox-label {
             background: linear-gradient(to right, #AEE2FF, #C2FFD9);
             padding:4px 10px;
@@ -219,60 +211,48 @@ if df is not None:
     </style>
 """, unsafe_allow_html=True)
 
-# Render the styled label manually
     st.sidebar.markdown('<div class="custom-selectbox-label">📊 Choose a Plot Type</div>', unsafe_allow_html=True)
-
-# Display the selectbox without label
     plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Heatmap", "Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     st.write("")
-     
-    #plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
-    
-    
+    # ------------------------- Plotting Based on Selection -------------------------
     if plot_type == "Histogram":
         col = st.selectbox("Choose a numeric column", numeric_cols)
         fig, ax = plt.subplots()
         sns.histplot(df[col], kde=True, ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
         st.markdown(
-    f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
-    unsafe_allow_html=True
-)
+            f'<div style="text-align: center;">{generate_download_link(fig)}</div>',
+            unsafe_allow_html=True
+        )
 
     elif plot_type == "Boxplot":
         col = st.selectbox("Choose a numeric column", numeric_cols)
         fig, ax = plt.subplots()
         sns.boxplot(x=df[col], ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
     elif plot_type == "Correlation Heatmap":
         fig, ax = plt.subplots(figsize=(10, 6))
         corr = df[numeric_cols].corr()
         sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
     elif plot_type == "Countplot":
         col = st.selectbox("Choose a categorical column", cat_cols)
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.countplot(y=col, data=df, order=df[col].value_counts().index, ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
     elif plot_type == "Missing Values Heatmap":
         fig, ax = plt.subplots(figsize=(10, 5))
         sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu", ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
 
     elif plot_type == "Pairplot":
         st.info("📌 Generating pairplot. This may take a few seconds for large datasets.")
@@ -285,8 +265,4 @@ if df is not None:
         fig, ax = plt.subplots(figsize=(10, 6))
         sns.violinplot(x=x_col, y=y_col, data=df, ax=ax)
         st.pyplot(fig)
-        #st.markdown(generate_download_link(fig), unsafe_allow_html=True)
-        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>',unsafe_allow_html=True)
-
-
-    #st.info("📌 Tip: Use the sidebar to switch between different plots. For deployment, push this to GitHub and host on Streamlit Cloud or Vercel.")
+        st.markdown(f'<div style="text-align: center;">{generate_download_link(fig)}</div>', unsafe_allow_html=True)
