@@ -156,7 +156,7 @@ if df is not None:
         📈 Auto Plots
     </div>
 """, unsafe_allow_html=True)
-  ##################################################  
+  ########################OPTION PANEL EFFECT##########################  
     st.sidebar.markdown("""
     <style>
         .custom-sidebar-title {
@@ -184,22 +184,7 @@ if df is not None:
     </div>
 """, unsafe_allow_html=True)
 ##########################################################
-    #st.sidebar.title("🛠️ Options Panel")
-    st.sidebar.markdown("""
-    <div style="
-        background: linear-gradient(to right, #98CEB8, #98A4CE);
-        padding: 3px 7px;
-        border-radius: 15px;
-        font-family: 'Trebuchet MS', sans-serif;
-        color: #5F2D2D;
-        font-size: 22px;
-        font-weight: bold;
-        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    ">
-        🛠️ Options Panel
-    </div>
-""", unsafe_allow_html=True)
+    
 
     #///////////////////////option panel//////////////////
     with st.container():
