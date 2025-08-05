@@ -69,7 +69,6 @@
 
 ## 📁 Folder Structure
 ├── .streamlit/
-
 │ └── config.toml # Optional theming configs
 
 ├── pages/
