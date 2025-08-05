@@ -158,6 +158,22 @@ if df is not None:
 """, unsafe_allow_html=True)
 
     st.sidebar.title("🛠️ Options Panel")
+    st.sidebar.markdown("""
+    <div style="
+        background: linear-gradient(to right, #ffe0b2, #ffcc80);
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-family: 'Trebuchet MS', sans-serif;
+        color: #e65100;
+        font-size: 22px;
+        font-weight: bold;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    ">
+        🛠️ Options Panel
+    </div>
+""", unsafe_allow_html=True)
+
     plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", [
     "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
     "Missing Values Heatmap", "Pairplot", "Violinplot"])
