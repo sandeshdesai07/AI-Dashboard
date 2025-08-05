@@ -73,7 +73,7 @@ st.markdown("""
 st.markdown("---")
 
 # ---------- File Upload ----------            
-#****************************************
+
 with st.container():
     st.markdown(
         """
@@ -115,11 +115,9 @@ with st.container():
         """,
         unsafe_allow_html=True
     )
-#*************************************************
-    
-    #st.markdown("### 🪄 Upload and Understand Your Data")
+
     st.write("")
-    #st.write("Upload your dataset and explore its structure and basic statistics.")
+  
     st.markdown(
     "<h5 style='text-align: center; color: #AE6BC4;'>Upload your dataset and explore its structure and basic statistics.</h5>",
     unsafe_allow_html=True
@@ -127,7 +125,7 @@ with st.container():
     st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
     
-    #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+############################Main Operation###################################
 
 if uploaded_file is not None:
     try:
@@ -162,6 +160,41 @@ def generate_download_link(fig):
 
 # ---------- Data and Plots ----------
 if df is not None:
+    st.markdown(
+    """
+    <style>
+    /* Custom hover on expander label */
+    .custom-expander .streamlit-expanderHeader {
+        font-family: 'Courier New', monospace;
+        font-size: 18px;
+        color: #0d47a1;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+    }
+
+    .custom-expander .streamlit-expanderHeader:hover {
+        color: #1a237e;
+        animation: bounce 0.6s ease;
+    }
+
+    /* Bouncing effect */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Expander block with unique class
+with st.container():
+    st.markdown('<div class="custom-expander">', unsafe_allow_html=True)
+    with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
+        st.dataframe(df.head(), use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
         st.dataframe(df.head(), use_container_width=True)
 
