@@ -268,7 +268,7 @@ plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Hea
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     #st.write("")
      
-    plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
+    #plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
     
     
