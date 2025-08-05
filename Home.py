@@ -261,14 +261,15 @@ if df is not None:
 """, unsafe_allow_html=True)
 
 # Render the styled label manually
-st.sidebar.markdown('<div class="custom-selectbox-label">📊 Choose a Plot Type</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="custom-selectbox-label">📊 Choose a Plot Type</div>', unsafe_allow_html=True)
 
 # Display the selectbox without label
-plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Heatmap", "Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
+    plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Heatmap", "Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
+
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    #st.write("")
+    st.write("")
      
-    #plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
+    plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
     
     
