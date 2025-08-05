@@ -69,7 +69,9 @@
 
 ## 📁 Folder Structure
 ├── .streamlit/
+
 │ └── config.toml # Optional theming configs
+
 ├── pages/
 │ ├── 1_Auto_Plots.py # Additional visualization pages
 │ ├── 2_Model_Train.py # (Planned) ML Training Module
