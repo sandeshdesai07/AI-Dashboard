@@ -91,22 +91,7 @@ with st.container():
 )
     st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
-    st.markdown(
-    """
-    <div style="
-        background-color: #e3f2fd;
-        padding: 10px 25px;
-        border-radius: 12px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-        margin-bottom: 10px;
-    ">
-        <h4 style="color: #1565c0; font-family: 'Segoe UI', sans-serif; margin: 0;">
-            📂 Upload your CSV file
-        </h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+    
 
 uploaded_file = st.file_uploader("", type=["csv"])
 
