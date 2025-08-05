@@ -127,20 +127,6 @@ def generate_download_link(fig):
 
 # ---------- Data and Plots ----------
 if df is not None:
-    st.markdown("""
-    <style>
-    div[role="button"][aria-expanded="true"], 
-    div[role="button"][aria-expanded="false"] {
-        background: linear-gradient(90deg, #e1f5fe, #b3e5fc);
-        color: #01579b !important;
-        font-weight: 600;
-        border-radius: 10px;
-        padding: 8px;
-        border: 2px solid #4fc3f7;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    </style>
-""", unsafe_allow_html=True)
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
         st.dataframe(df.head(), use_container_width=True)
 
