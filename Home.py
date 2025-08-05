@@ -48,7 +48,7 @@ with st.container():
         <div style="
             background: linear-gradient(135deg, #e0f7fa, #ffffff);
             padding: 13px 20px;
-            border-radius: 12px;
+            border-radius: 50px;
             border: 1px solid #b2ebf2;
             box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
         ">
