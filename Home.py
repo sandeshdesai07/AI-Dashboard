@@ -49,7 +49,7 @@ with st.container():
             background: linear-gradient(135deg, #e0f7fa, #ffffff);
             padding: 8px 20px;
             border-radius: 50px;
-            border: 1px solid #b2ebf2;
+            border: 5px solid #b2ebf2;
             box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
         ">
             <h3 style="color: #00796b; margin: 0; font-family: 'Segoe UI', sans-serif;">
