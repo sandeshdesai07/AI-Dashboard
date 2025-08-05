@@ -164,7 +164,7 @@ if df is not None:
         padding: 3px 7px;
         border-radius: 15px;
         font-family: 'Trebuchet MS', sans-serif;
-        color: #A680FF;
+        color: #5F2D2D;
         font-size: 22px;
         font-weight: bold;
         box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
