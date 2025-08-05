@@ -92,10 +92,7 @@ with st.container():
     st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
     
-
-uploaded_file = st.file_uploader("", type=["csv"])
-
-#uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
+    #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 
 if uploaded_file is not None:
     try:
