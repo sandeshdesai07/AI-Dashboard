@@ -174,9 +174,32 @@ if df is not None:
     </div>
 """, unsafe_allow_html=True)
 
-    plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", [
+    #///////////////////////option panel//////////////////
+    # Inject custom CSS for the sidebar selectbox
+st.markdown("""
+    <style>
+        .css-1c7y2kd.e1fqkh3o5 {
+            background-color: #e3f2fd !important;  /* Light blue background */
+            padding: 10px;
+            border-radius: 10px;
+        }
+        label.css-1pyk5q3.e1fqkh3o2 {
+            color: #0d47a1 !important;  /* Dark blue label text */
+            font-weight: bold;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Sidebar selectbox (no change here, just UI enhanced by CSS)
+plot_type = st.sidebar.selectbox(
+    "📊 Choose a Plot Type", 
+    ["Missing Values Heatmap", "Histogram", "Boxplot", 
+     "Correlation Heatmap", "Countplot", "Pairplot", "Violinplot"]
+)
+
+    plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Missing Values Heatmap",
     "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
-    "Missing Values Heatmap", "Pairplot", "Violinplot"])
+     "Pairplot", "Violinplot"])
     
     if plot_type == "Histogram":
         col = st.selectbox("Choose a numeric column", numeric_cols)
