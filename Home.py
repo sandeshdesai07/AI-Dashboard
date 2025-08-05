@@ -190,7 +190,7 @@ if df is not None:
     </div>
 """, unsafe_allow_html=True)
 
-    ###########################################################
+    ############################Option Panel Hover##########################
     st.sidebar.markdown("""
     <style>
         .custom-sidebar-title {
@@ -232,13 +232,40 @@ if df is not None:
 """, unsafe_allow_html=True)
 
 ##########################################################
-    
+    st.markdown("""
+    <style>
+        /* Target the selectbox label */
+        .custom-selectbox-label {
+            background: linear-gradient(to right, #AEE2FF, #C2FFD9);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #333;
+            transition: all 1s ease;
+            display: inline-block;
+        }
+
+        .custom-selectbox-label:hover {
+            background: linear-gradient(to right, #FDDDE6, #D5F4E6);
+            color: #1a1a1a;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Render the styled label manually
+st.sidebar.markdown('<div class="custom-selectbox-label">📊 Choose a Plot Type</div>', unsafe_allow_html=True)
+
+# Display the selectbox without label
+plot_type = st.sidebar.selectbox("", ["Correlation Heatmap", "Missing Values Heatmap", "Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
     #///////////////////////option panel//////////////////
     with st.container():
         st.write("")
-    #st.write("")
-       
+     
     plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", ["Correlation Heatmap", "Missing Values Heatmap","Histogram", "Boxplot", "Countplot", "Pairplot", "Violinplot"])
 
     
