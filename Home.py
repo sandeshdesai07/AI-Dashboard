@@ -59,6 +59,26 @@ with st.container():
         """,
         unsafe_allow_html=True
     )
+    st.markdown(
+    """
+    <div style="text-align: center;">
+        <div style="
+            display: inline-block;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 5px solid #b2ebf2;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+        ">
+            <h3 style="color: #00796b; margin: 0; font-family: 'Segoe UI', sans-serif;">
+                🪄 Upload and Understand Your Data
+            </h3>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
     #st.markdown("### 🪄 Upload and Understand Your Data")
     st.write("")
     #st.write("Upload your dataset and explore its structure and basic statistics.")
