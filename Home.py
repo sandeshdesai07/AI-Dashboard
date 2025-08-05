@@ -60,12 +60,13 @@ with st.container():
         unsafe_allow_html=True
     )
     #st.markdown("### 🪄 Upload and Understand Your Data")
-    #st.write("\n")
+    st.write("")
     #st.write("Upload your dataset and explore its structure and basic statistics.")
     st.markdown(
     "<h5 style='text-align: center; color: #AE6BC4;'>Upload your dataset and explore its structure and basic statistics.</h5>",
     unsafe_allow_html=True
 )
+    st.write("")
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 #uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
 
