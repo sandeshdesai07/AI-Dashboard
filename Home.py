@@ -156,7 +156,34 @@ if df is not None:
         📈 Auto Plots
     </div>
 """, unsafe_allow_html=True)
+  ##################################################  
+    st.sidebar.markdown("""
+    <style>
+        .custom-sidebar-title {
+            background: linear-gradient(to right, #98CEB8, #98A4CE);
+            padding: 3px 7px;
+            border-radius: 15px;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #5F2D2D;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
+        .custom-sidebar-title:hover {
+            background: linear-gradient(to right, #B8E5D1, #C5B8E5);
+            color: #2E1C1C;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+    <div class="custom-sidebar-title">
+        🛠️ Options Panel
+    </div>
+""", unsafe_allow_html=True)
+##########################################################
     #st.sidebar.title("🛠️ Options Panel")
     st.sidebar.markdown("""
     <div style="
