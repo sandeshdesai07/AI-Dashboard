@@ -140,6 +140,22 @@ if df is not None:
     cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
 
     st.subheader("📈 Auto Plots")
+    st.markdown("""
+    <div style="
+        background: linear-gradient(to right, #e3f2fd, #bbdefb);
+        padding: 10px 20px;
+        border-left: 6px solid #2196f3;
+        border-radius: 8px;
+        font-family: 'Segoe UI', sans-serif;
+        color: #0d47a1;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    ">
+        📈 Auto Plots
+    </div>
+""", unsafe_allow_html=True)
+
     st.sidebar.title("🛠️ Options Panel")
     plot_type = st.sidebar.selectbox("📊 Choose a Plot Type", [
     "Histogram", "Boxplot", "Correlation Heatmap", "Countplot",
