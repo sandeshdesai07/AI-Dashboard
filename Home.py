@@ -160,7 +160,7 @@ if df is not None:
     #st.sidebar.title("🛠️ Options Panel")
     st.sidebar.markdown("""
     <div style="
-        background: linear-gradient(to right, #98CEB8, #ffcc80);
+        background: linear-gradient(to right, #98CEB8, #98A4CE);
         padding: 3px 7px;
         border-radius: 15px;
         font-family: 'Trebuchet MS', sans-serif;
