@@ -28,29 +28,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 ######################################
-
 st.markdown(
     """
+    <style>
+    .dashboard-title {
+        color: #2c3e50;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(90deg, #84CFDB, #ffffff);
+        display: inline-block;
+        padding: 10px 30px;
+        border-radius: 15px;
+        box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .dashboard-title:hover {
+        transform: scale(1.05);
+        background: linear-gradient(90deg, #B0E0E6, #ffffff);
+        box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    </style>
+
     <div style="text-align: center; padding: 10px;">
-        <h1 style="
-            color: #2c3e50;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(90deg, #84CFDB, #ffffff);
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 15px;
-            box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
-        "
-        onmouseover="this.style.transform='scale(1.05)'; this.style.background='linear-gradient(90deg, #B0E0E6, #ffffff)';"
-        onmouseout="this.style.transform='scale(1)'; this.style.background='linear-gradient(90deg, #84CFDB, #ffffff)';"
-        >
+        <h1 class="dashboard-title">
             📈 AI-Powered Analytics Dashboard
         </h1>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 
 #############################
 
