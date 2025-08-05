@@ -63,7 +63,7 @@ with st.container():
     st.write("\n")
     st.write("Upload your dataset and explore its structure and basic statistics.")
     st.markdown(
-    "<h3 style='text-align: center;'>Upload your dataset and explore its structure and basic statistics.</h3>",
+    "<h4 style='text-align: center;'>Upload your dataset and explore its structure and basic statistics.</h4>",
     unsafe_allow_html=True
 )
     uploaded_file = st.file_uploader("📂 Upload your CSV file", type=["csv"])
