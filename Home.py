@@ -157,14 +157,14 @@ if df is not None:
     </div>
 """, unsafe_allow_html=True)
 
-    st.sidebar.title("🛠️ Options Panel")
+    #st.sidebar.title("🛠️ Options Panel")
     st.sidebar.markdown("""
     <div style="
         background: linear-gradient(to right, #ffe0b2, #ffcc80);
-        padding: 5px 10px;
-        border-radius: 8px;
+        padding: 3px 7px;
+        border-radius: 15px;
         font-family: 'Trebuchet MS', sans-serif;
-        color: #e65100;
+        color: #AD1010;
         font-size: 22px;
         font-weight: bold;
         box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
