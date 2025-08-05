@@ -159,42 +159,7 @@ def generate_download_link(fig):
     return href
 
 # ---------- Data and Plots ----------
-if df is not None:
-    st.markdown(
-    """
-    <style>
-    /* Custom hover on expander label */
-    .custom-expander .streamlit-expanderHeader {
-        font-family: 'Courier New', monospace;
-        font-size: 18px;
-        color: #0d47a1;
-        transition: all 0.3s ease-in-out;
-        position: relative;
-    }
-
-    .custom-expander .streamlit-expanderHeader:hover {
-        color: #1a237e;
-        animation: bounce 0.6s ease;
-    }
-
-    /* Bouncing effect */
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Expander block with unique class
-with st.container():
-    st.markdown('<div class="custom-expander">', unsafe_allow_html=True)
-    with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
-        st.dataframe(df.head(), use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    
+if df is not None:   
     with st.expander("🔍 Preview Uploaded Dataset", expanded=True):
         st.dataframe(df.head(), use_container_width=True)
 
